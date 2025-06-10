@@ -26,7 +26,7 @@ article {
     position: relative;
     display: grid;
     gap: var(--gap-xl);
-    margin-top: var(--gap-xl);
+    margin-top: var(--gap-l);
     z-index: 2;
 }
 
@@ -73,7 +73,7 @@ section {
 }
 
 footer {
-    margin-block: var(--gap-xl) var(--gap);
+    margin-block: var(--gap-xl) var(--gap-l);
 }
 
 .footer-content {

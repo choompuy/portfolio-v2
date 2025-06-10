@@ -208,7 +208,7 @@ export class WaterScene {
 
                     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
                     
-                    float pointSize = (vAlpha * 2.5) + abs(sin(uTime + pos.x * 0.1));
+                    float pointSize = (vAlpha * 3.0) + abs(sin(uTime + pos.x * 0.1)) + 1.0;
                     gl_PointSize = pointSize;
                 }
             `,

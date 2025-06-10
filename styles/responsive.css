@@ -18,6 +18,10 @@
         grid-template-columns: 1fr 1fr;
         column-gap: var(--gap-m);
     }
+
+    footer {
+        margin-bottom: var(--gap-m);
+    }
 }
 
 @media (min-width: 960px) {
