@@ -1,0 +1,28 @@
+.intro-wrapper {
+    background-color: var(--primary-color);
+    min-height: 600px;
+    height: 95vh;
+    max-height: 1200px;
+    overflow: hidden;
+}
+
+.intro {
+    position: relative;
+    height: 100%;
+}
+
+.intro-title {
+    position: absolute;
+    bottom: 50%;
+    width: 100%;
+    padding-inline: var(--page-padding);
+    color: var(--primary-inverse-color);
+    text-align: center;
+    z-index: 0;
+}
+
+.canvas-container {
+    position: relative;
+    height: 100%;
+    z-index: 1;
+}

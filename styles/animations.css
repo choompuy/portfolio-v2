@@ -1,0 +1,120 @@
+slide-animate {
+    position: relative;
+    overflow: hidden;
+}
+
+.slide-in {
+    transform: translate3d(0, 110%, 0);
+    animation: slide-in .4s var(--cubic-bezier) forwards;
+}
+
+.slide-out {
+    animation: slide-out .4s var(--cubic-bezier) forwards;
+}
+
+slide-animate[pseudo]::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--primary-inverse-color);
+}
+
+slide-animate[pseudo="in"]::after {
+    height: 100%;
+}
+
+.slide-in-pseudo::after,
+.slide-out-pseudo::after {
+    margin-top: auto;
+}
+
+.slide-in-pseudo::after {
+    animation: slide-in-pseudo .4s var(--cubic-bezier) forwards;
+}
+
+.slide-out-pseudo::after {
+    animation: slide-out-pseudo .4s var(--cubic-bezier) forwards;
+}
+
+skeleton-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+skeleton-image.active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #eee;
+    background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: slide-background 2s infinite;
+}
+
+skeleton-image img {
+    width: 100%;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    from {
+        transform: translate3d(0, 110%, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes slide-out {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(0, 110%, 0);
+    }
+}
+
+@keyframes slide-in-pseudo {
+    from {
+        height: 100%;
+    }
+
+    to {
+        height: 0;
+    }
+}
+
+@keyframes slide-out-pseudo {
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes slide-background {
+    0% {
+        background-position: 150% 0;
+    }
+    
+    40%,
+    100% {
+        background-position: -50% 0;
+    }
+}

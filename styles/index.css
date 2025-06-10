@@ -1,0 +1,47 @@
+.no-scroll {
+    overflow: hidden;
+}
+
+h2,
+h3,
+h4 {
+    font-weight: 400;
+}
+
+h1 {
+    font-size: var(--h1-font-size);
+}
+
+p {
+    text-align: left;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
+
+button,
+a {
+    outline-offset: var(--gap-xs);
+    font-family: inherit;
+    font-size: 1rem;
+    color: inherit;
+    transition: 0.2s ease-in;
+    transition-property: opacity, color;
+    cursor: pointer;
+}
+
+button:active,
+button:hover,
+a:active,
+a:hover {
+    opacity: .6;
+}
+
+img {
+    object-position: top;
+    object-fit: cover;
+    min-width: 100%;
+    height: 100%;
+}

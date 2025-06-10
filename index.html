@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet"
+        media="print" onload="this.media='all'">
+
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="preload" href="styles/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/intro.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/layout.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/header.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/projects.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="styles/responsive.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap"
+            rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="styles/index.css">
+        <link rel="stylesheet" href="styles/animations.css">
+        <link rel="stylesheet" href="styles/intro.css">
+        <link rel="stylesheet" href="styles/layout.css">
+        <link rel="stylesheet" href="styles/header.css">
+        <link rel="stylesheet" href="styles/projects.css">
+        <link rel="stylesheet" href="styles/responsive.css">
+    </noscript>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <title>Васильев Айхал - Портфолио</title>
+    <meta name="description"
+        content="Я занимаюсь разработкой адаптивных и интерактивных веб-приложений с акцентом на качество кода, производительность и опыт пользователя. Постоянно изучаю новые технологии, стремлюсь к чистому, оптимизированному коду и лучшим практикам в разработке">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            min-width: 300px;
+            color: var(--primary-color);
+            font-size: var(--default-font-size);
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--primary-inverse-color);
+        }
+
+        .page-loading {
+            overflow: hidden;
+        }
+
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-inline: var(--page-padding);
+            background-color: var(--primary-color);
+            z-index: 100;
+        }
+
+        .loading-screen.hide {
+            animation: slide-out .6s var(--cubic-bezier) forwards;
+            animation-delay: .4s;
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--gap-s);
+        }
+
+        .loading-percentage {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary-inverse-color);
+        }
+    </style>
+</head>
+
+<body class="page-loading">
+    <div class="loading-screen">
+        <div class="loading-container">
+            <slide-animate>
+                <div class="loading-percentage">0</div>
+            </slide-animate>
+            <slide-animate>
+                <div class="loading-status secondary-color">Инициализация...</div>
+            </slide-animate>
+        </div>
+    </div>
+
+    <div class="page-wrapper" id="page-wrapper">
+        <header>
+            <div class="header-content inverse-color">
+                <navigation-button class="secondary-color" scroll-to-id="page-wrapper" label="Васильев Айхал">
+                </navigation-button>
+
+                <button class="header-burger-button invertible-color" aria-label="Открыть меню">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="1.5rem" height="1.5rem"
+                        stroke="currentColor" stroke-width=".6" fill="rgba(0,0,0,0)" stroke-linecap="round"
+                        style="cursor: pointer">
+                        <path d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7">
+                            <animate dur="0.2s" attributeName="d"
+                                values="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7;M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7" fill="freeze"
+                                begin="start.begin" />
+                            <animate dur="0.2s" attributeName="d"
+                                values="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7;M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" fill="freeze"
+                                begin="reverse.begin" />
+                        </path>
+                        <rect width="10" height="10" stroke="none">
+                            <animate dur="1s" id="reverse" attributeName="width" begin="click" />
+                        </rect>
+                        <rect width="10" height="10" stroke="none">
+                            <animate dur="0.001s" id="start" attributeName="width" values="10;0" fill="freeze"
+                                begin="click" />
+                            <animate dur="0.001s" attributeName="width" values="0;10" fill="freeze"
+                                begin="reverse.begin" />
+                        </rect>
+                    </svg>
+                </button>
+
+                <nav class="header-nav">
+                    <slide-animate animation="slide-in">
+                        <navigation-button class="invertible-color" scroll-to-id="projects"
+                            label="Проекты"></navigation-button>
+                    </slide-animate>
+
+                    <slide-animate animation="slide-in">
+                        <navigation-button class="invertible-color" scroll-to-id="skills"
+                            label="Навыки"></navigation-button>
+                    </slide-animate>
+
+                    <slide-animate animation="slide-in">
+                        <navigation-button class="invertible-color" scroll-to-id="about-me"
+                            label="Обо мне"></navigation-button>
+                    </slide-animate>
+
+                    <slide-animate animation="slide-in">
+                        <navigation-button class="invertible-color" scroll-to-id="contact"
+                            label="Контакты"></navigation-button>
+                    </slide-animate>
+                </nav>
+
+                <button class="invertible-color contact-button">Связаться</button>
+            </div>
+        </header>
+
+        <main>
+            <div id="intro" class="intro-wrapper">
+                <div class="intro">
+                    <div class="intro-title">
+                        <h1>Frontend developer</h1>
+                    </div>
+                    <div class="canvas-container"></div>
+                </div>
+            </div>
+            <article>
+                <section id="projects" class="projects-section scroll-margin">
+
+                    <slide-animate animation="slide-in" show-on-intersect>
+                        <div class="section-title">
+                            <h2>Проекты</h2>
+                        </div>
+                    </slide-animate>
+                    <div class="section-content grid-global">
+                        <div class="project-primary"></div>
+                        <div class="projects-wrapper"></div>
+                    </div>
+                </section>
+                <section id="skills" class="skills-section scroll-margin">
+
+                    <slide-animate animation="slide-in" show-on-intersect>
+                        <div class="section-title">
+                            <h2>Навыки</h2>
+                        </div>
+                    </slide-animate>
+                    <div class="section-content skills-wrapper">
+                        <slide-animate animation="slide-in-pseudo" show-on-intersect pseudo="in">
+                            <div class="skills grid-global">
+                                <h3>Языки</h3>
+                                <ul>
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JavaScript</li>
+                                    <li>TypeScript</li>
+                                    <li>SQL</li>
+                                </ul>
+                            </div>
+                        </slide-animate>
+                        <slide-animate animation="slide-in-pseudo" show-on-intersect pseudo="in">
+                            <div class="skills grid-global">
+                                <h3>Фреймворки</h3>
+                                <ul>
+                                    <li>React</li>
+                                    <li>Next.js</li>
+                                    <li>Vue 3</li>
+                                    <li>React Native</li>
+                                </ul>
+                            </div>
+                        </slide-animate>
+                        <slide-animate animation="slide-in-pseudo" show-on-intersect pseudo="in">
+                            <div class="skills grid-global">
+                                <h3>Инструменты</h3>
+                                <ul>
+                                    <li>GitHub</li>
+                                    <li>Vercel</li>
+                                    <li>npm</li>
+                                    <li>DevTools</li>
+                                </ul>
+                            </div>
+                        </slide-animate>
+
+                        <slide-animate animation="slide-in-pseudo" show-on-intersect pseudo="in">
+                            <div class="skills grid-global">
+                                <h3>Работа с данными</h3>
+                                <ul>
+                                    <li>REST API</li>
+                                    <li>GraphQL</li>
+                                    <li>Redux</li>
+                                    <li>Firebase</li>
+                                </ul>
+                            </div>
+                        </slide-animate>
+                    </div>
+                </section>
+                <section id="about-me" class="about-me-section scroll-margin">
+
+                    <slide-animate animation="slide-in" show-on-intersect>
+                        <div class="section-title">
+                            <h2>Обо мне</h2>
+                        </div>
+                    </slide-animate>
+                    <div class="section-content grid-global">
+                        <div class="start">
+                            <slide-animate animation="slide-in-pseudo" show-on-intersect pseudo="in">
+                                <p>
+                                    Меня зовут Васильев Айхал — я фронтенд-разработчик,
+                                    специализирующийся на создании современных,
+                                    удобных и функциональных пользовательских интерфейсов
+                                </p>
+                            </slide-animate>
+                        </div>
+                        <div class="end">
+                            <slide-animate animation="slide-in-pseudo" show-on-intersect pseudo="in">
+                                <p>
+                                    Я занимаюсь разработкой адаптивных и интерактивных веб-приложений
+                                    с акцентом на качество кода, производительность и опыт пользователя.
+                                    Постоянно изучаю новые технологии, стремлюсь к чистому,
+                                    оптимизированному коду и лучшим практикам в разработке
+                                </p>
+                            </slide-animate>
+                        </div>
+                    </div>
+                </section>
+            </article>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div id="contact" class="start contact scroll-margin">
+                    <slide-animate animation="slide-in" show-on-intersect>
+                        <div class="contact-title">
+                            <p>(контакты)</p>
+                        </div>
+                    </slide-animate>
+
+                    <slide-animate animation="slide-in" show-on-intersect>
+                        <div class="contact-links">
+                            <a target="_blank" href="https://t.me/ognebyte">telegram</a>
+                            <a target="_blank" href="https://github.com/ognebyte">github</a>
+                        </div>
+                    </slide-animate>
+                </div>
+
+                <div class="end">
+                    <a target="_blank" href="mailto:vasilev2001as@gmail.com">vasilev2001as@gmail.com</a>
+                    <p>©2025</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script type="module" src="scripts/index.js"></script>
+</body>
+
+</html>
