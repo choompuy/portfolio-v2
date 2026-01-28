@@ -26,6 +26,13 @@ class ProjectModalComponent extends HTMLElement {
                     <slide-animate animation="slide-in-pseudo" pseudo="in">
                         <p class="project-modal-description"></p>
                     </slide-animate>
+
+                    <div class="project-modal-achievements">
+                        <slide-animate animation="slide-in-pseudo" pseudo="in">
+                            <p>Достижения:</p>
+                        </slide-animate>
+                        <ul></ul>
+                    </div>
                     
                     <div class="project-modal-details">
                         <slide-animate animation="slide-in">
@@ -71,8 +78,8 @@ class ProjectModalComponent extends HTMLElement {
     }
 
     setupEventListeners() {
-        const container = this.querySelector('.project-modal-container');
-        const closeButton = this.querySelector('.project-modal-close');
+        const container = this.querySelector(".project-modal-container");
+        const closeButton = this.querySelector(".project-modal-close");
 
         if (!container || !closeButton) return;
 
@@ -92,46 +99,46 @@ class ProjectModalComponent extends HTMLElement {
         };
 
         this.handleKeydown = (e) => {
-            if (e.key === 'Escape' && this.isOpen) {
+            if (e.key === "Escape" && this.isOpen) {
                 this.close();
             }
         };
 
-        document.addEventListener('keydown', this.handleKeydown);
+        document.addEventListener("keydown", this.handleKeydown);
     }
 
     disconnectedCallback() {
         if (this.handleKeydown) {
-            document.removeEventListener('keydown', this.handleKeydown);
+            document.removeEventListener("keydown", this.handleKeydown);
         }
     }
 
     open(projectData) {
         if (this.isOpen) return;
-        const content = this.querySelector('.project-modal-content');
+        const content = this.querySelector(".project-modal-content");
         this.updateContent(projectData);
         this.style.display = null;
-        document.body.classList.add('no-scroll');
+        document.body.classList.add("no-scroll");
 
         setTimeout(() => {
             content.style.display = null;
         }, 600);
 
         requestAnimationFrame(() => {
-            this.setAttribute('is-open', true);
+            this.setAttribute("is-open", true);
             this.isOpen = true;
         });
     }
 
     close() {
         if (!this.isOpen) return;
-        const content = this.querySelector('.project-modal-content');
-        this.setAttribute('is-open', false);
+        const content = this.querySelector(".project-modal-content");
+        this.setAttribute("is-open", false);
 
         setTimeout(() => {
-            this.style.display = 'none';
-            document.body.classList.remove('no-scroll');
-            content.style.display = 'none';
+            this.style.display = "none";
+            document.body.classList.remove("no-scroll");
+            content.style.display = "none";
             this.isOpen = false;
         }, 600);
     }
@@ -139,89 +146,100 @@ class ProjectModalComponent extends HTMLElement {
     updateContent(projectData) {
         if (!projectData) return;
 
-        const {
-            name = '',
-            description = '',
-            images = [],
-            stack = '',
-            year = '',
-            github = '',
-            demo = '',
-            path = ''
-        } = projectData;
+        const { name = "", description = "", images = [], stack = "", year = "", github = "", demo = "", path = "", achievements = [] } = projectData;
 
-        const projectImages = this.querySelector('.project-modal-images');
+        const projectImages = this.querySelector(".project-modal-images");
         if (projectImages) {
-            projectImages.innerHTML = '';
+            projectImages.innerHTML = "";
             images.map((img, index) => {
-                const slideAnimate = document.createElement('slide-animate');
-                slideAnimate.setAttribute('animation', 'slide-in-pseudo');
-                slideAnimate.setAttribute('show-on-intersect', '');
-                slideAnimate.setAttribute('pseudo', 'in');
+                const slideAnimate = document.createElement("slide-animate");
+                slideAnimate.setAttribute("animation", "slide-in-pseudo");
+                slideAnimate.setAttribute("show-on-intersect", "");
+                slideAnimate.setAttribute("pseudo", "in");
 
-                const skeletonImage = document.createElement('skeleton-image');
-                const projectImage = document.createElement('img');
+                const skeletonImage = document.createElement("skeleton-image");
+                const projectImage = document.createElement("img");
 
-                projectImage.classList.add('project-modal-image');
+                projectImage.classList.add("project-modal-image");
                 projectImage.src = path + img;
                 projectImage.alt = `${name} #${index + 1}`;
-                projectImage.loading = 'lazy';
+                projectImage.loading = "lazy";
 
                 skeletonImage.appendChild(projectImage);
                 slideAnimate.appendChild(skeletonImage);
                 projectImages.appendChild(slideAnimate);
-            })
+            });
         }
 
         // Обновляем заголовок
-        const titleElement = this.querySelector('.project-modal-title');
+        const titleElement = this.querySelector(".project-modal-title");
         if (titleElement) {
             titleElement.textContent = name;
         }
 
         // Обновляем описание
-        const descriptionElement = this.querySelector('.project-modal-description');
+        const descriptionElement = this.querySelector(".project-modal-description");
         if (descriptionElement) {
             descriptionElement.textContent = description;
         }
 
+        const achievementsElement = this.querySelector(".project-modal-achievements ul");
+        if (achievementsElement) {
+            achievementsElement.innerHTML = "";
+            const fragment = document.createDocumentFragment();
+
+            achievements.map((value, index) => {
+                const slideAnimate = document.createElement("slide-animate");
+                slideAnimate.setAttribute("animation", "slide-in-pseudo");
+                slideAnimate.setAttribute("pseudo", "in");
+
+                const li = document.createElement("li");
+                li.textContent = value;
+
+                slideAnimate.appendChild(li);
+                fragment.appendChild(slideAnimate);
+            });
+
+            achievementsElement.appendChild(fragment);
+        }
+
         // Обновляем детали
-        const stackElement = this.querySelector('.project-modal-stack');
+        const stackElement = this.querySelector(".project-modal-stack");
         if (stackElement) {
             stackElement.textContent = stack;
         }
 
-        const dateElement = this.querySelector('.project-modal-year');
+        const dateElement = this.querySelector(".project-modal-year");
         if (dateElement) {
             dateElement.textContent = year;
         }
 
         // Обновляем ссылки
-        const demoLink = this.querySelector('.project-modal-demo');
-        const githubLink = this.querySelector('.project-modal-github');
+        const demoLink = this.querySelector(".project-modal-demo");
+        const githubLink = this.querySelector(".project-modal-github");
 
         if (demoLink) {
             if (demo) {
                 demoLink.href = demo;
-                demoLink.style.display = 'flex';
+                demoLink.style.display = "flex";
             } else {
-                demoLink.style.display = 'none';
+                demoLink.style.display = "none";
             }
         }
 
         if (githubLink) {
             if (github) {
                 githubLink.href = github;
-                githubLink.style.display = 'flex';
+                githubLink.style.display = "flex";
             } else {
-                githubLink.style.display = 'none';
+                githubLink.style.display = "none";
             }
         }
     }
 }
 
 export const registerProjectModalComponent = () => {
-    if (!customElements.get('project-modal')) {
-        customElements.define('project-modal', ProjectModalComponent);
+    if (!customElements.get("project-modal")) {
+        customElements.define("project-modal", ProjectModalComponent);
     }
-}
+};

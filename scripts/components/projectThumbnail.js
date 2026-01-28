@@ -23,7 +23,7 @@ class ProjectThumbnailComponent extends HTMLElement {
             </slide-animate>
 
             <slide-animate animation="slide-in-pseudo" show-on-intersect pseudo="in">
-                <p class="project-thumbnail-description">${props.description}</p>
+                <p class="project-thumbnail-description">${props.shortDescription}</p>
             </slide-animate>
         `;
         

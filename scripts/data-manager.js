@@ -1,7 +1,6 @@
 export class DataManager {
     constructor() {
         this.projectsData = [];
-        this.cache = new Map();
     }
 
     async loadProjectData(loadingManager) {

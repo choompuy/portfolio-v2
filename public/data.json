@@ -1,63 +1,74 @@
 {
     "data": [
         {
-            "name": "Weather",
-            "description": "приложение показывает прогноз на несколько дней и часов с интерактивными графиками",
-            "description2": "Приложение показывает прогноз на несколько дней и часов с интерактивными графиками, переключением единиц измерения (°C/°F) и адаптивной вёрсткой.",
+            "name": "Weather Dashboard",
+            "shortDescription": "погодный и экологический дашборд с расчётом AQI",
+            "description": "Приложение показывает прогноз на несколько дней с интерактивными графиками, расчётом индекса качества воздуха (AQI) по EPA-логике и адаптивной темой",
+            "achievements": [
+                "Модуль расчёта AQI с primary pollutant detection",
+                "Глобальный реактивный store на Composition API",
+                "Синхронизация метрик между UI без лишних ререндеров",
+                "Адаптация темы через MutationObserver"
+            ],
             "path": "/assets/weather/",
             "thumbnailImg": "weather-thumbnail.jpg",
-            "images": [
-                "weather-1.jpg",
-                "weather-2.jpg"
-            ],
-            "stack": "Vue 3, TypeScript, WeatherAPI, PrimeVue",
+            "images": ["weather-1.jpg", "weather-2.jpg"],
+            "stack": "Vue 3, TypeScript, WeatherAPI, Chart.js, PrimeVue",
             "year": 2025,
-            "github": "https://github.com/ognebyte/vue-weather",
+            "github": "https://github.com/choompuy/vue-weather",
             "demo": "https://vue-weather-plum.vercel.app/"
         },
         {
             "name": "ProjectPaper",
-            "description": "веб-приложение для управления проектами и задачами",
-            "description2": "Это веб-приложение для управления проектами и задачами. Позволяет пользователям создавать проекты, работать с досками задач, настраивать приоритеты и сроки, а также приглашать участников.",
+            "shortDescription": "SaaS система управления проектами и задачами",
+            "description": "Веб-приложение для управления проектами с real-time синхронизацией, системой ролей (RBAC) и двумя представлениями задач (Board/Table)",
+            "achievements": [
+                "Next.js App Router с layout-guard аутентификацией",
+                "RBAC-система (owner/admin/member) с защитой от эскалации привилегий",
+                "Real-time архитектура на Firestore onSnapshot + Redux",
+                "URL-driven модальные окна через query-параметры"
+            ],
             "path": "/assets/projectpaper/",
             "thumbnailImg": "projectpaper-thumbnail.jpg",
-            "images": [
-                "projectpaper-1.jpg",
-                "projectpaper-2.jpg",
-                "projectpaper-3.jpg"
-            ],
+            "images": ["projectpaper-1.jpg", "projectpaper-2.jpg", "projectpaper-3.jpg"],
             "stack": "Next.js, TypeScript, Firebase, Redux",
             "year": 2024,
-            "github": "https://github.com/ognebyte/nextjs-projectpaper",
+            "github": "https://github.com/choompuy/nextjs-projectpaper",
             "demo": "https://nextjs-projectpaper.vercel.app/"
         },
         {
             "name": "GitHubRepoFinder",
-            "description": "веб-приложение для поиска репозиториев на GitHub",
-            "description2": "Веб-приложение для поиска репозиториев на GitHub.<br>Вводите запрос – получаете список репозиториев в таблице. Можно кликнуть на любой результат, чтобы увидеть краткую информацию и ссылку на репозиторий.",
+            "shortDescription": "поиск и анализ GitHub репозиториев",
+            "description": "Веб-приложение для поиска репозиториев на GitHub через GraphQL API. Master-detail интерфейс с таблицей результатов и боковой панелью деталей",
+            "achievements": [
+                "GitHub GraphQL API интеграция с graphql-request",
+                "Централизованная обработка ошибок и токенов",
+                "Redux Toolkit + createAsyncThunk для async state",
+                "MUI DataGrid с кастомными колонками и пагинацией"
+            ],
             "path": "/assets/githubrepofinder/",
             "thumbnailImg": "githubrepofinder-thumbnail.jpg",
-            "images": [
-                "githubrepofinder-1.jpg"
-            ],
-            "stack": "Next.js, TypeScript, GrapQL API, Redux, Sass",
+            "images": ["githubrepofinder-1.jpg"],
+            "stack": "Next.js, TypeScript, GitHub GraphQL API, Redux, MUI",
             "year": 2024,
-            "github": "https://github.com/ognebyte/nextjs-githubrepofinder",
+            "github": "https://github.com/choompuy/nextjs-githubrepofinder",
             "demo": "https://nextjs-githubrepofinder.vercel.app/"
         },
         {
             "name": "Diary",
-            "description": "это мобильное приложение, которое помогает студентам и преподавателям управлять учебным процессом",
-            "description2": "Это мобильное приложение, которое помогает студентам и преподавателям управлять учебным процессом. Оно заменяет бумажные записи и хаос в расписаниях удобным цифровым инструментом.",
+            "shortDescription": "мобильное приложение для управления учебным процессом",
+            "description": "Мобильное приложение для студентов и преподавателей. Заменяет бумажные записи цифровым инструментом с расписанием, оценками и уведомлениями",
+            "achievements": [
+                "Гибридная архитектура: Firebase (sync) + SQLite (offline)",
+                "Cross-platform разработка для iOS/Android",
+                "Push-уведомления и background sync"
+            ],
             "path": "/assets/diary/",
             "thumbnailImg": "diary-thumbnail.jpg",
-            "images": [
-                "diary-1.jpg",
-                "diary-2.jpg"
-            ],
-            "stack": "React Native, JavaScript, Expo, Firebase, SQLite",
+            "images": ["diary-1.jpg", "diary-2.jpg"],
+            "stack": "React Native, Expo, Firebase, SQLite",
             "year": 2023,
-            "github": "https://github.com/ognebyte/reactnative-diary"
+            "github": "https://github.com/choompuy/reactnative-diary"
         }
     ]
 }

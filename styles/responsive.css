@@ -29,11 +29,6 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .header-content {
-        grid-template-columns: auto 1fr auto;
-        justify-items: center;
-    }
-
     .header-burger-button {
         display: none;
     }

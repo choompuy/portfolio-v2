@@ -171,10 +171,10 @@ function setupEventListeners() {
         document.body.classList.toggle('no-scroll')
     };
 
-    eventManager.addHandler(window, 'mousemove', mouseHandler);
-    eventManager.addHandler(window, 'resize', resizeHandler);
-    eventManager.addHandler(window, 'scroll', scrollHandler, { passive: true });
-    eventManager.addHandler(burgerButton, 'click', handleBurgerButton);
+    eventManager.add(window, 'mousemove', mouseHandler);
+    eventManager.add(window, 'resize', resizeHandler);
+    eventManager.add(window, 'scroll', scrollHandler, { passive: true });
+    eventManager.add(burgerButton, 'click', handleBurgerButton);
 }
 
 function setClassListInverseColor(element, isAdd) {

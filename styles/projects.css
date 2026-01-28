@@ -124,10 +124,14 @@ project-modal skeleton-image.active {
     gap: var(--gap-m);
 }
 
-.project-modal-info {
+.project-modal-achievements {
     display: flex;
     flex-direction: column;
-    gap: var(--gap-m);
+    gap: var(--gap-s);
+}
+
+.project-modal-achievements ul {
+    list-style: square inside;
 }
 
 .project-modal-details {
